@@ -1,7 +1,7 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 1,
 
-  "name": "CodeConscious",
+  "name": "codeconscious",
   "description": "This extension charges someone using Venmo if they're to be blamed for causing code to be reverted.",
   "version": "1.0",
   "permissions": [
