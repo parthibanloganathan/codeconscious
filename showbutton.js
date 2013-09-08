@@ -1,5 +1,26 @@
 var commits = [];
 
+function makePayment(venmo_email, venmo_note, venmo_amount) {
+	
+	chrome.storage.local.get(['venmoKey'], function(result) {	
+		jQuery.ajax({
+  			url: "https://api.venmo.com/payments",
+	  		type: "POST",
+  			data: {
+  				access_token: result.venmoKey,
+  				email: venmo_email,
+	  			note: venmo_note,
+  				amount: venmo_amount
+  			},
+ 	 		success: function() {
+  				console.log("Payment successful");
+  			},
+  			error: function() {
+  				console.log("Payment failed.");
+  			}
+  		});
+  	});
+  }
 
 function callback(id)
 {
@@ -15,7 +36,7 @@ function callback(id)
 		}
 		
 		console.log(user, resUser);
-		alert(user['email']);
+		makePayment(user['email'], "Shame for breaking on commit " + commits[id]['commitCode']+" !", -2);
 	});
 }
 
@@ -33,7 +54,7 @@ jQuery(document).ready(function() {
 			line['commitCode'] = jQuery(this).find('a').first().text();
 			commits.push(line);
 			
-			jQuery(this).append('<span class="blamed" data-id='+ index +'>Blame</span>');	
+			jQuery(this).append('<a class="minibutton blamed" data-id='+ index +'>Blame</a>');	
 		}
 	);
 

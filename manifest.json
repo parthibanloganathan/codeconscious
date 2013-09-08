@@ -7,7 +7,8 @@
   "content_scripts":[
     {
       "matches": ["https://github.com/*/*/blame/*"],
-      "js": ["jquery.js", "underscore.js", "gh3.js", "showbutton.js"]
+      "js": ["jquery.js", "underscore.js", "gh3.js", "showbutton.js"],
+      "css": ["blame.css"]
     },
     {
       "matches": ["https://github.com/robots.txt*"],
