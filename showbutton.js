@@ -1,6 +1,6 @@
 var commits = [];
 
-function callback(commit_id)
+function callback(username)
 {
 	var username = commits[id]['ownerId'];
 
