@@ -4,6 +4,12 @@
   "name": "codeconscious",
   "description": "This extension charges someone using Venmo if they're to be blamed for causing code to be reverted.",
   "version": "1.0",
+  "content_scripts":[
+    {
+      "matches": ["https://github.com/*/*/blame/*"],
+      "js": ["jquery.js, "parser.js", "script.js"]
+    }
+  ],
   "permissions": [
     "storage", "tabs"
   ],
