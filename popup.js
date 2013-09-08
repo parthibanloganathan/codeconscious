@@ -13,6 +13,6 @@ jQuery(document).ready(function(){
 
   jQuery("#github_sign_in").click(function() {
       githubAuth.authorize();
-      console.log(githubAuth.getAccessToken());
+      alert(githubAuth.getAccessToken());
   });
 });
