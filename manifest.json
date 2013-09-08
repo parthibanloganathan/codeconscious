@@ -7,7 +7,7 @@
   "content_scripts":[
     {
       "matches": ["https://github.com/*/*/blame/*"],
-      "js": ["jquery.js", "showbutton.js"]
+      "js": ["jquery.js", "underscore.js", "gh3.js", "showbutton.js"]
     }
   ],
   "permissions": [

@@ -1,11 +1,26 @@
 var commits = [];
 
-function callback(id)
+function callback(commit_id)
 {
+	var username = commits[id]['ownerId'];
+
+	var user = new Gh3.User(username)
+	,	userInfos = $("#user");
+
+	user.fetch(function (err, resUser){
+
+		if(err) {
+			throw "outch ..."
+		}
+		
+		console.log(user, resUser);
+		alert(user['email']);
+	});
 }
 
+
 jQuery(document).ready(function() {
-	
+
 	jQuery('.section-first .commitinfo').each(
 		function(index, element) {
 			
@@ -19,7 +34,7 @@ jQuery(document).ready(function() {
 			jQuery(this).append('<span class="blamed" data-id='+ index +'>Blame</span>');	
 		}
 	);
-	
+
 	jQuery('.blamed').click(function() {
 		callback(jQuery(this).data('id'));
 	});
