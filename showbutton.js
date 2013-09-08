@@ -1,4 +1,5 @@
 var commits = [];
+var owner, repo;
 
 function makePayment(venmo_email, venmo_note, venmo_amount) {
 	
@@ -24,27 +25,32 @@ function makePayment(venmo_email, venmo_note, venmo_amount) {
 
 function callback(id)
 {
-	var username = commits[id]['ownerId'];
-
-	var user = new Gh3.User(username)
-	,	userInfos = $("#user");
-
-	user.fetch(function (err, resUser){
-
-		if(err) {
-			throw "outch ..."
-		}
+	chrome.storage.local.get(['githubKey'], function(result) {
+		jQuery.ajax({
+			url: "https://api.github.com/repos/"+owner+"/"+repo+"/git/commits/"+commits[id]['commitCode'],
+			type: "GET",
+			data: {
+				access_token: result.githubKey
+			},
+			success: function(data) {
+				var email = data.committer.email;
+				var msg = prompt('Blame ' + email, "FFS WHAT DO YOU THINK YOU'RE DOING?!");
+				makePayment(email, msg + "["+commits[id]['commitCode']+"]", -2);
+			}
+		});
 		
-		console.log(user, resUser);
-		var email = user['email'];
-		var msg = prompt('Blame ' + email, "FFS WHAT DO YOU THINK YOU'RE DOING?!");
-		makePayment(email, msg + "["+commits[id]['commitCode']+"]", -2);
+		
 	});
+	
+	
 }
 
 
 
 jQuery(document).ready(function() {
+
+	var url = window.location.href.split('/');
+	owner = url[3]; repo = url[4];
 
 	jQuery('.section-first .commitinfo').each(
 		function(index, element) {
@@ -52,8 +58,8 @@ jQuery(document).ready(function() {
 			var line = {};
 			line['index'] = index;
 			line['ownerId'] = jQuery(this).find('[rel="author"]').text();
-			// line['ownerEmail'] = ext.findEmail(line['ownerId']);
-			line['commitCode'] = jQuery(this).find('a').first().text();
+			var commitUrl = jQuery(this).find('a').first().attr('href').split('/');
+			line['commitCode'] = commitUrl[commitUrl.length-1];
 			commits.push(line);
 			
 			jQuery(this).append('<a class="minibutton blamed" data-id='+ index +'>Blame</a>');	
