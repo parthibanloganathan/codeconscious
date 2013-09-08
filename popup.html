@@ -12,13 +12,14 @@
     display: block;
   }
 </style>
-<div class="normal-settings show">
-    <select id="status">
-      <option value="on">On</option>
-      <option value="off">Off</option>
-    </select>
+
+<script>
+  $("#venmo_sign_in").click(function() {
+    window.open("https://api.venmo.com/oauth/authorize");
+  });
+</script>
+
+<div class="normal-settings show" id="venmo_sign_in">
+    <button type="button">Sign in to Venmo</button> 
 </div>
 
-<div class="tooltiptext" style="display: none;">
-   Test
-</div>
