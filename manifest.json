@@ -8,10 +8,16 @@
     {
       "matches": ["https://github.com/*/*/blame/*"],
       "js": ["jquery.js", "underscore.js", "gh3.js", "showbutton.js"]
+    },
+    {
+      "matches": ["https://github.com/robots.txt*"],
+      "js": ["oauth2/oauth2_inject.js"],
+      "run_at": "document_start"
     }
   ],
   "permissions": [
-    "storage", "tabs"
+    "storage", "tabs",
+    "https://github.com/login/oauth/access_token"
   ],
 
   "browser_action": {
