@@ -14,7 +14,8 @@ function makePayment(venmo_email, venmo_note, venmo_amount) {
   				amount: venmo_amount
   			},
  	 		success: function() {
-  				console.log("Payment successful");
+  				alert("Charged $2.00!");
+                console.log("Payment successful");
   			},
   			error: function() {
   				console.log("Payment failed.");
