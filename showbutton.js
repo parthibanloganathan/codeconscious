@@ -1,6 +1,7 @@
 var commits = [];
 
-function callback(username)
+
+function callback(id)
 {
 	var username = commits[id]['ownerId'];
 
@@ -17,6 +18,7 @@ function callback(username)
 		alert(user['email']);
 	});
 }
+
 
 
 jQuery(document).ready(function() {
