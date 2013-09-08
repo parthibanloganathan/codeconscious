@@ -11,4 +11,8 @@ jQuery(document).ready(function(){
     window.open("https://api.venmo.com/oauth/authorize?client_id=" + CLIENT_ID + "&scope=make_payments&response_type=token");
   });
 
+  jQuery("#github_sign_in").click(function() {
+      githubAuth.authorize();
+      console.log(githubAuth.getAccessToken());
+  });
 });
