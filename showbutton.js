@@ -36,7 +36,9 @@ function callback(id)
 		}
 		
 		console.log(user, resUser);
-		makePayment(user['email'], "Shame for breaking on commit " + commits[id]['commitCode']+" !", -2);
+		var email = user['email'];
+		var msg = prompt('Blame ' + email, "FFS WHAT DO YOU THINK YOU'RE DOING?!");
+		makePayment(email, msg + "["+commits[id]['commitCode']+"]", -2);
 	});
 }
 
