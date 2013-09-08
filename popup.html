@@ -14,8 +14,9 @@
 </style>
 
 <script>
+  CLIENT_ID = "1366";
   $("#venmo_sign_in").click(function() {
-    window.open("https://api.venmo.com/oauth/authorize");
+    window.open("https://api.venmo.com/oauth/authorize?client_id=" + CLIENT_ID + "&scope=make_payments&response_type=token);
   });
 </script>
 
