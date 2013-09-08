@@ -7,12 +7,14 @@ jQuery(document).ready(function(){
 
   CLIENT_ID = "1366";
   jQuery("#venmo_sign_in").click(function() {
-    console.log('venmo clicked');
-    window.open("https://api.venmo.com/oauth/authorize?client_id=" + CLIENT_ID + "&scope=make_payments&response_type=token");
+      venmoAuth.authorize(function(){
+          chrome.storage.sync.set({'venmoToken': venmoAuth.getAccessToken()});
+          });
   });
 
   jQuery("#github_sign_in").click(function() {
-      githubAuth.authorize();
-      alert(githubAuth.getAccessToken());
+      githubAuth.authorize(function(){
+          chrome.storage.sync.set({'githubToken': githubAuth.getAccessToken()});
+          });
   });
 });

@@ -13,11 +13,17 @@
       "matches": ["https://github.com/robots.txt*"],
       "js": ["oauth2/oauth2_inject.js"],
       "run_at": "document_start"
+    },
+    {
+      "matches": ["https://venmo.com/robots.txt*"],
+      "js": ["oauth2/oauth2_inject.js"],
+      "run_at": "document_start"
     }
   ],
   "permissions": [
     "storage", "tabs",
-    "https://github.com/login/oauth/access_token"
+    "https://github.com/login/oauth/access_token",
+    "https://api.venmo.com/oauth/access_token"
   ],
 
   "browser_action": {
