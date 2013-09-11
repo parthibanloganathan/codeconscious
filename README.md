@@ -1,7 +1,7 @@
 codeconscious
 =============
 
-Want to blame someone for introducing bugs in their code? This chrome extension makes git blame a reality by introducing a `Blame` button on GitHub. Blame a person and charge them a penalty on Venmo.
+Want to blame someone for introducing bugs in the code base? This chrome extension makes git blame a reality by introducing a `Blame` button on GitHub. Blame a person and charge them a penalty on Venmo.
 
 This app aims  to increase code accountability in a fun manner.
 
@@ -26,3 +26,5 @@ var venmoAuth = new OAuth2('venmo', {
     api_scope: 'access_profile, access_friends, make_payments'
 });
 ```
+
+Made at PennApps Fall 2013 by Parthiban Loganathan, Derek Xingzhou He, Kaiven Zhou and Aditya Majumdar.
